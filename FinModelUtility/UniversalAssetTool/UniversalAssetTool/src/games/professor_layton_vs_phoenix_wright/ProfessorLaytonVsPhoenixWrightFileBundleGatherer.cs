@@ -43,14 +43,15 @@ public sealed class ProfessorLaytonVsPhoenixWrightFileBundleGatherer
     new FileHierarchyAssetBundleSeparator(
         fileHierarchy,
         (directory, organizer) => {
-          var xcDirectories
-              = directory
-                .FilesWithExtension(".xc")
-                .Select(f => directory.TryToGetExistingSubdir(
-                            f.NameWithoutExtension,
-                            out var d)
-                            ? d
-                            : null);
+          var xcDirectories =
+              directory
+                  .FilesWithExtension(".xc")
+                  .Select(f =>
+                  {
+                    directory.TryToGetExistingSubdir(f.NameWithoutExtension, out var d);
+                    return d;
+                  })
+                  .Where(d => d != null)!;
 
           var xcBundles = Array.Empty<IXcDirectories>();
           if (directory.LocalPath == "\\vs1\\chr") {
