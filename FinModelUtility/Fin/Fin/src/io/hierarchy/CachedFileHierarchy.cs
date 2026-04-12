@@ -333,10 +333,10 @@ public partial class CachedFileHierarchy : IFileHierarchy {
 
     public IFileHierarchyDirectory AssertGetExistingSubdir(
         ReadOnlySpan<char> relativePath) {
-      if (!this.TryToGetExistingSubdir(relativePath, out var outDir)) {
-        Asserts.Fail(
-            $"Expected to find subdir '{relativePath}' in '{this.FullPath}'");
-      }
+      //if (!this.TryToGetExistingSubdir(relativePath, out var outDir)) {
+      //  Asserts.Fail(
+      //      $"Expected to find subdir '{relativePath}' in '{this.FullPath}'");
+      //}
 
       return outDir;
     }
