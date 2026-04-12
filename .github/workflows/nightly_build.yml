@@ -30,8 +30,6 @@ jobs:
         shell: bash
         
   build:
-    needs: check_date
-    if: ${{ inputs.manual == 'true' || needs.check_date.outputs.should_run == 'true' }}
 
     runs-on: windows-latest
 
