@@ -18,10 +18,10 @@ public sealed class ProfessorLaytonVsPhoenixWrightFileBundleGatherer
       IFileBundleOrganizer organizer,
       IMutablePercentageProgress mutablePercentageProgress,
       IFileHierarchy fileHierarchy) {
-    if (new ThreeDsXfsaTool().Extract(fileHierarchy.Root.GetExistingFiles()
-                                                   .SingleByName("vs1.fa"))) {
-      fileHierarchy.Root.Refresh(true);
-    }
+    new ThreeDsXfsaTool().Extract(fileHierarchy.Root.GetExistingFiles()
+                                                   .SingleByName("vs1.fa"))
+    fileHierarchy.Root.Refresh(true);
+    
 
     var didUpdateAny = false;
     var extractor = new XcArchiveExtractor();
@@ -36,9 +36,9 @@ public sealed class ProfessorLaytonVsPhoenixWrightFileBundleGatherer
       } catch (Exception e) { }
     }
 
-    if (didUpdateAny) {
-      fileHierarchy.RefreshRootAndUpdateCache();
-    }
+    //if (didUpdateAny) {
+    fileHierarchy.RefreshRootAndUpdateCache();
+    //}
 
     new FileHierarchyAssetBundleSeparator(
         fileHierarchy,
